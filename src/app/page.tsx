@@ -17,7 +17,7 @@ export default function Home() {
       <button onClick={clickButton}>전송</button>
       <ul>
         {conversation?.map((item: any) => (
-          <li>
+          <li key={item.content}>
             <div>
               {item.role} : {item.content}
             </div>
