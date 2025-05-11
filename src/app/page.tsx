@@ -1,9 +1,6 @@
 "use client";
-import Image from "next/image";
-import { QueryFunction } from "@tanstack/query-core";
-import { useQuery } from "@tanstack/react-query";
 import useDiaryBot from "@/hooks/useDiaryBot";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
