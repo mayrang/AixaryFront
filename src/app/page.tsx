@@ -1,25 +1,33 @@
 "use client";
 import useDiaryBot from "@/hooks/useDiaryBot";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
   const { sendMessage, conversation, diary } = useDiaryBot();
-  const clickButton = () => {
+  const clickButton = (e: FormEvent) => {
+    e.preventDefault();
     sendMessage(message);
+    setMessage("");
+  };
+  const clickEnd = () => {
+    sendMessage("뷁");
     setMessage("");
   };
 
   console.log("data", conversation);
   return (
     <div className="p-20">
-      <input
-        className="border"
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={clickButton}>전송</button>
+      <form onSubmit={clickButton}>
+        <textarea className="border h-20 w-96 text-sm" value={message} onChange={(e) => setMessage(e.target.value)} />
+        <div>
+          <button type="submit" className="px-2 py-1 rounded-md text-sm bg-green-500 text-white font-normal">
+            전송
+          </button>
+          <button className="ml-2 px-2 py-1 bg-red-500  rounded-md text-white text-sm font-normal">종료</button>
+        </div>
+      </form>
+
       <ul>
         <li>assitant: 오늘 무슨 일이 있으셨나요?</li>
         {conversation?.map((item: any) => (
@@ -30,7 +38,7 @@ export default function Home() {
           </li>
         ))}
       </ul>
-      {diary !== "" && <div>{diary}</div>}
+      {diary !== "" && <div className="mt-16 ">{diary}</div>}
     </div>
   );
 }
