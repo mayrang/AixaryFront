@@ -13,9 +13,15 @@ export default function Home() {
   console.log("data", conversation);
   return (
     <div className="p-20">
-      <input className="border" type="text" value={message} onChange={(e) => setMessage(e.target.value)} />
+      <input
+        className="border"
+        type="text"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
       <button onClick={clickButton}>전송</button>
       <ul>
+        <li>assitant: 오늘 무슨 일이 있으셨나요?</li>
         {conversation?.map((item: any) => (
           <li key={item.content}>
             <div>
