@@ -18,15 +18,28 @@ export default function Home() {
   console.log("data", conversation);
   return (
     <div className="p-20">
-      <form onSubmit={clickButton}>
-        <textarea className="border h-20 w-96 text-sm" value={message} onChange={(e) => setMessage(e.target.value)} />
+      <div>
+        <textarea
+          className="border h-20 w-96 text-sm"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
         <div>
-          <button type="submit" className="px-2 py-1 rounded-md text-sm bg-green-500 text-white font-normal">
+          <button
+            onClick={clickButton}
+            className="px-2 py-1 rounded-md text-sm bg-green-500 text-white font-normal"
+          >
             전송
           </button>
-          <button className="ml-2 px-2 py-1 bg-red-500  rounded-md text-white text-sm font-normal">종료</button>
+          <button
+            type="button"
+            onClick={clickEnd}
+            className="ml-2 px-2 py-1 bg-red-500  rounded-md text-white text-sm font-normal"
+          >
+            종료
+          </button>
         </div>
-      </form>
+      </div>
 
       <ul>
         <li>assitant: 오늘 무슨 일이 있으셨나요?</li>
