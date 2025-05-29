@@ -34,7 +34,7 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[75vh] pr-1 text-lg">
+            <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[75vh] pr-1 text-xl">
               <li className="text-[#8D7B68]">🤖 assistant: 오늘 무슨 일이 있으셨나요?</li>
               {conversation?.map((item: any, idx: number) => (
                 <li key={idx} className={`flex ${item.role === "user" ? "justify-end" : "justify-start"}`}>

@@ -4,3 +4,20 @@
 :root {
   font-family: "Nanum Pen Script", sans-serif !important;
 }
+
+*::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  height: 80px;
+  background: rgba(217, 217, 217, 1);
+}
+*::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
