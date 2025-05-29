@@ -6,7 +6,7 @@ const openai = new OpenAI({
 });
 
 // 종료 키워드 목록
-const EXIT_TRIGGERS = ["뷁"];
+const EXIT_TRIGGERS = ["일기 종료"];
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
