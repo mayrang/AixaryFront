@@ -1,19 +1,26 @@
 "use client";
 import useDiaryBot from "@/hooks/useDiaryBot";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useEffect, useState } from "react";
 
 export default function Home() {
   const [message, setMessage] = useState("");
   const { sendMessage, conversation, diary } = useDiaryBot();
+  const bottomRef = useRef<HTMLDivElement | null>(null);
+
   const clickButton = (e: FormEvent) => {
     e.preventDefault();
     sendMessage(message);
     setMessage("");
   };
+
   const clickEnd = () => {
     sendMessage("일기 종료");
     setMessage("");
   };
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [conversation.length]);
 
   return (
     <div className="flex justify-center min-h-screen bg-[#FFF8F2] px-4 font-pen">
@@ -27,8 +34,8 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[65vh] pr-1 text-lg">
-              <li className="text-[#8D7B68] ">🤖 assistant: 오늘 무슨 일이 있으셨나요?</li>
+            <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[75vh] pr-1 text-lg">
+              <li className="text-[#8D7B68]">🤖 assistant: 오늘 무슨 일이 있으셨나요?</li>
               {conversation?.map((item: any, idx: number) => (
                 <li key={idx} className={`flex ${item.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
@@ -42,11 +49,12 @@ export default function Home() {
                   </div>
                 </li>
               ))}
+              <div ref={bottomRef} />
             </ul>
 
             <form onSubmit={clickButton} className="flex flex-col gap-2">
               <textarea
-                className="border text-lg  border-[#E6DDD1] rounded-xl p-3 h-20  resize-none bg-[#FFFDF9] placeholder:text-[#B8A99B] focus:outline-none focus:ring-2 focus:ring-[#DDB892]"
+                className="border text-lg border-[#E6DDD1] rounded-xl p-3 h-20 resize-none bg-[#FFFDF9] placeholder:text-[#B8A99B] focus:outline-none focus:ring-2 focus:ring-[#DDB892]"
                 value={message}
                 placeholder="오늘 있었던 일을 들려주세요 ✍️"
                 onChange={(e) => setMessage(e.target.value)}
