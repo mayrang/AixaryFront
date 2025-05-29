@@ -39,7 +39,7 @@ export default function Home() {
               {conversation?.map((item: any, idx: number) => (
                 <li key={idx} className={`flex ${item.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
-                    className={`max-w-[75%] px-4 py-2 rounded-2xl text-sm shadow-md leading-relaxed ${
+                    className={`max-w-[75%] px-4 py-2 rounded-2xl text-lg shadow-md leading-relaxed ${
                       item.role === "user"
                         ? "bg-[#D8F3DC] text-[#3A4F39] rounded-br-none"
                         : "bg-white text-[#4B3A2F] border border-[#E6DDD1] rounded-bl-none"
