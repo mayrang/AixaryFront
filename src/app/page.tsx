@@ -21,14 +21,14 @@ export default function Home() {
         {diary !== "" ? (
           <div className="p-6 bg-[#FFFCF7] rounded-xl shadow-md border border-[#F0EAE0]">
             <h2 className="text-2xl mb-4 text-[#6B4F3B]">📓 오늘의 일기</h2>
-            <div className="whitespace-pre-wrap text-[#5D4B3C] leading-relaxed bg-[url('/note-lines.png')] bg-repeat-y bg-[length:100%_32px] p-4 rounded-md shadow-inner">
+            <div className="whitespace-pre-wrap text-xl text-[#5D4B3C] leading-relaxed bg-[url('/note-lines.png')] bg-repeat-y bg-[length:100%_32px] p-4 rounded-md shadow-inner">
               {diary}
             </div>
           </div>
         ) : (
           <>
-            <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[65vh] pr-1">
-              <li className="text-[#8D7B68] text-base">🤖 assistant: 오늘 무슨 일이 있으셨나요?</li>
+            <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[65vh] pr-1 text-lg">
+              <li className="text-[#8D7B68] ">🤖 assistant: 오늘 무슨 일이 있으셨나요?</li>
               {conversation?.map((item: any, idx: number) => (
                 <li key={idx} className={`flex ${item.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
@@ -46,7 +46,7 @@ export default function Home() {
 
             <form onSubmit={clickButton} className="flex flex-col gap-2">
               <textarea
-                className="border border-[#E6DDD1] rounded-xl p-3 h-20 text-base resize-none bg-[#FFFDF9] placeholder:text-[#B8A99B] focus:outline-none focus:ring-2 focus:ring-[#DDB892]"
+                className="border text-lg  border-[#E6DDD1] rounded-xl p-3 h-20  resize-none bg-[#FFFDF9] placeholder:text-[#B8A99B] focus:outline-none focus:ring-2 focus:ring-[#DDB892]"
                 value={message}
                 placeholder="오늘 있었던 일을 들려주세요 ✍️"
                 onChange={(e) => setMessage(e.target.value)}
@@ -70,14 +70,6 @@ export default function Home() {
           </>
         )}
       </div>
-
-      {/* 웹폰트 import */}
-      <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
-        .font-pen {
-          font-family: "Nanum Pen Script", cursive;
-        }
-      `}</style>
     </div>
   );
 }
