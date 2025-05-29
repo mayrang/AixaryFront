@@ -23,7 +23,7 @@ export default function Home() {
   }, [conversation.length]);
 
   return (
-    <div className="flex justify-center min-h-screen bg-[#FFF8F2] px-4 font-pen">
+    <div className="flex justify-center min-h-screen bg-[#FFF8F2] px-4 ">
       <div className="w-full max-w-[390px] py-6 flex flex-col justify-between">
         {diary !== "" ? (
           <div className="p-6 bg-[#FFFCF7] rounded-xl shadow-md border border-[#F0EAE0]">
