@@ -9,6 +9,9 @@ export default function Home() {
 
   const clickButton = (e: FormEvent) => {
     e.preventDefault();
+    if (message === "") {
+      return;
+    }
     sendMessage(message);
     setMessage("");
   };
