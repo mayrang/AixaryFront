@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import { Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
-
-const nanum = Nanum_Pen_Script({
-  weight: "400",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "🧸Aiary - 에이어리",
@@ -19,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` antialiased`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
