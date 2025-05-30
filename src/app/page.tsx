@@ -26,7 +26,7 @@ export default function Home() {
   }, [conversation.length]);
 
   return (
-    <div className="flex justify-center min-h-screen bg-[#FFF8F2] px-4 ">
+    <div className="flex justify-center max-h-screen min-h-screen bg-[#FFF8F2] px-4 ">
       <div className="w-full max-w-[390px] py-6 flex flex-col justify-between">
         {diary !== "" ? (
           <div className="p-6 bg-[#FFFCF7] rounded-xl shadow-md border border-[#F0EAE0]">
@@ -38,9 +38,16 @@ export default function Home() {
         ) : (
           <>
             <ul className="flex-1 space-y-2 mb-4 overflow-y-auto max-h-[75vh] pr-1 text-xl">
-              <li className="text-[#8D7B68]">🤖 assistant: 오늘 무슨 일이 있으셨나요?</li>
+              <li className="text-[#8D7B68]">
+                🤖 assistant: 오늘 무슨 일이 있으셨나요?
+              </li>
               {conversation?.map((item: any, idx: number) => (
-                <li key={idx} className={`flex ${item.role === "user" ? "justify-end" : "justify-start"}`}>
+                <li
+                  key={idx}
+                  className={`flex ${
+                    item.role === "user" ? "justify-end" : "justify-start"
+                  }`}
+                >
                   <div
                     className={`max-w-[75%] px-4 py-2 rounded-2xl text-lg shadow-md leading-relaxed ${
                       item.role === "user"
